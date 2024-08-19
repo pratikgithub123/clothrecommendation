@@ -1,6 +1,5 @@
 import React from 'react';
-import Banner1 from '../assets/banner.png';
-import Banner2 from '../assets/bannerb.png';
+import { default as Banner1, default as Banner2 } from '../assets/bannerb.png';
 
 import './components/Banner.css';
 
