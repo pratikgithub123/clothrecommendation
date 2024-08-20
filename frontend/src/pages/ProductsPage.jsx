@@ -113,7 +113,7 @@ const Product = ({ searchQuery }) => {
 
   return (
     <div className="product-container">
-      <h1 className="product-heading">Discover the fresh Plants!</h1>
+      <h1 className="product-heading">Shop With Us</h1>
 
       <div className="search-container">
         <label>Search Product:</label>

@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
     const [productDescription, setProductDescription] = useState('');
-    const [productCategory, setProductCategory] = useState('Indoor');
+    const [productCategory, setProductCategory] = useState('Top');
     const [productImage, setProductImage] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
     const [products, setProducts] = useState([]);
@@ -110,8 +110,9 @@ const AdminDashboard = () => {
 
                             <label htmlFor="">Select category</label>
                             <select onChange={(e) => setProductCategory(e.target.value)} className='form-control mb-2'>
-                                <option value="Indoor">Indoor</option>
-                                <option value="Outdoor">Outdoor</option>
+                                <option value="Top">Top</option>
+                                <option value="Bottom">Bottom</option>
+                                <option value="Footwear">Footwear</option>
                             </select>
 
                             <label>Product Image</label>

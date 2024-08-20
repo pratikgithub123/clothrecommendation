@@ -3,8 +3,7 @@ import { FaEnvelope, FaLock, FaMapMarkerAlt, FaPhone, FaUser } from 'react-icons
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { registerApi } from '../apis/Api';
-import bottomLeftImage from '../assets/bottomleft.png';
-import topRightImage from '../assets/topright.png';
+
 import './components/Register.css';
 
 const Register = () => {
@@ -86,8 +85,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <img src={topRightImage} alt="Top Right" className="top-right-image" />
-      <img src={bottomLeftImage} alt="Bottom Left" className="bottom-left-image" />
+     
       <div className="register-form-container">
         <h1 className='m-3 register-title'> Create an Account!</h1>
         <form>

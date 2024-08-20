@@ -108,8 +108,9 @@ const AdminEditProduct = () => {
                         className='form-control mb-2'
                         required
                     >
-                        <option value="Indoor">Indoor</option>
-                        <option value="Outdoor">Outdoor</option>
+                       <option value="Top">Top</option>
+                                <option value="Bottom">Bottom</option>
+                                <option value="Footwear">Footwear</option>
                     </select>
 
                     <label>Product Image</label>

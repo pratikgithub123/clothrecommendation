@@ -4,7 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #92D088; 
+    background-color: black; 
+    color: white;
     padding: 0 5%;
     height: 100px; 
     font-family: 'Times New Roman', Times, serif;
@@ -26,7 +27,7 @@
 }
 .cart {
   font-size: 24px; /* Adjust size as needed */
-  color: #000; /* Adjust color as needed */
+  color: white; /* Adjust color as needed */
   margin: 10px 20px;
   cursor: pointer;
 }
@@ -66,7 +67,7 @@
   }
   ul li a {
     text-decoration: none; 
-    color: #242424;
+    color: white;
   }
   ul li a::before {
     content: '';
@@ -75,7 +76,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background-color: green;
+    background-color: white;
     transition: width 0.3s ease; 
 }
 ul li a:hover::before {
@@ -90,6 +91,7 @@ ul li a:hover::before {
     cursor: pointer;
     margin: 10px 20px;
     text-decoration: none;
+    color: white;
     
     
     
@@ -138,7 +140,7 @@ ul li a:hover::before {
   
   
   ul li a:hover {
-    color: green;
+    color: white;
     display: block; 
   }
   
