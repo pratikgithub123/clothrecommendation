@@ -1,6 +1,7 @@
 const Order = require('../model/orderModel');
 const Cart = require('../model/cartModel');
-const  User = require('../model/userModel')
+const  User = require('../model/userModel');
+const getRecommendations = require('../utils/getRecommendations');  
 
 const createOrder = async (req, res) => {
     const { userId, phoneNumber, location } = req.body;
@@ -56,10 +57,14 @@ const createOrder = async (req, res) => {
         cart.items = [];
         await cart.save();
 
+        // Get recommendations based on the purchased products
+        const recommendations = await getRecommendations(purchasedProductIds);
+
         res.status(201).json({
             success: true,
             message: "Order created successfully",
-            order
+            order,
+            recommendations  // Include the recommendations in the response
         });
     } catch (error) {
         console.error("Error creating order:", error);

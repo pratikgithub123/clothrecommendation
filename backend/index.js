@@ -2,11 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./database/db');
 const cors = require('cors');
-const cloudinary = require('cloudinary').v2;
 const acceptMultimedia = require('connect-multiparty');
 const cartRoutes = require('./routes/cartRoutes');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const recommendRoutes = require('./routes/recommendRoutes'); // Import the recommendRoutes
 
 const WebSocket = require('ws');
 const http = require('http');
@@ -20,6 +20,7 @@ const wss = new WebSocket.Server({ server });
 dotenv.config();
 
 // cloudinary config
+const cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME, 
   api_key: process.env.CLOUDINARY_API_KEY, 
@@ -47,6 +48,7 @@ app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/cart', cartRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/recommend', recommendRoutes); // Use the recommendRoutes here
 
 // WebSocket setup
 wss.on('connection', ws => {

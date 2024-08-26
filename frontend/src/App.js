@@ -22,8 +22,10 @@ import AdminDashboardUserDetails from './pages/admin/AdminDasboardUserDetails';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminDashboardOrderDetails from './pages/admin/AdminDashboardOrderDetails';
 import AdminEditProduct from './pages/admin/AdminEditProduct';
+
 import AdminRoutes from './protected_routes/AdminRoutes';
 import UserRoutes from './protected_routes/UserRoutes';
+
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   return (
@@ -45,6 +47,7 @@ function App() {
         <Route path='/products' element={<ProductsPage />} />
        {/* <Route path="/cart" component={CartPage} /> */}
        <Route path="/cart/:id" element={<CartPage/>} />
+       
         
       
         

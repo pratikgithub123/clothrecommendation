@@ -49,6 +49,15 @@ export const createProductApi = (formData) => {
         },
     });
 };
+export const getRecommendationsApi = async (purchaseHistory) => {
+    try {
+        const response = await Api.post('/api/recommend/recommend', { purchase_history: purchaseHistory });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching recommendations:', error.response?.data || error.message);
+        throw error;
+    }
+};
 
 export const getAllProductsApi = () => Api.get('/api/product/get_products');
 
