@@ -28,6 +28,10 @@ const userSchema = mongoose.Schema({
     cart: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Cart' 
+    }],
+    purchaseHistory: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product'
     }]
 });
 

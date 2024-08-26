@@ -44,18 +44,19 @@ const Card = ({ product }) => {
         <div className="product-info">
           <h3>{product.productName}</h3>
           <label>
-            Catergory: <h7>{product.productCategory}</h7>
+            Category: <span>{product.productCategory}</span>
           </label>
           
-          <div>
-            <label>Quantity:</label>
+          <div className="quantity-container">
+            <label className="quantity-label">Quantity:</label>
             <input
               type="number"
               value={quantity}
               min={1}
+              className="quantity-input"
               onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
             />
-            <label>Piece</label>
+            <label className="quantity-unit">Piece</label>
           </div>
           <p>Total Price: NPR {totalPrice}</p>
           <button onClick={handleAddToCart} className="add-to-cart-btn">

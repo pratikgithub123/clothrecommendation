@@ -25,11 +25,15 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    tags: {
+        type: [String], // Array of strings for tags
+        default: [],
+        trim: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
     },
-   
 });
 
 const Product = mongoose.model('Product', productSchema);

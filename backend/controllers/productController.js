@@ -3,18 +3,16 @@ const Products = require('../model/productModel');
 
 const createProduct = async (req, res) => {
     try {
-        // Destructure data
         const {
             productName,
             productPrice,
             productDescription,
             productCategory,
+            tags, // New field for tags
         } = req.body;
 
-        // Check if files are attached
         const productImage = req.files.productImage;
 
-        // Validate data
         if (!productName || !productPrice || !productDescription || !productCategory || !productImage) {
             return res.status(400).json({
                 success: false,
@@ -22,7 +20,6 @@ const createProduct = async (req, res) => {
             });
         }
 
-        // Upload image to Cloudinary
         const result = await cloudinary.uploader.upload(productImage.path, {
             folder: 'products',
             crop: 'scale',
@@ -34,6 +31,7 @@ const createProduct = async (req, res) => {
             productDescription,
             productCategory,
             productImageUrl: result.secure_url,
+            tags: tags ? tags.split(',').map(tag => tag.trim()) : [], // Handle tags as comma-separated values
         });
 
         await newProduct.save();
@@ -51,7 +49,56 @@ const createProduct = async (req, res) => {
     }
 };
 
+const updateProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { productName, productPrice, productDescription, productCategory, tags } = req.body;
+        let productImageUrl = req.body.oldImage;
 
+        if (!productName || !productPrice || !productDescription || !productCategory) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please fill all the fields',
+            });
+        }
+
+        if (req.files && req.files.productImage) {
+            const result = await cloudinary.uploader.upload(req.files.productImage.path, {
+                folder: 'products',
+                crop: 'scale',
+            });
+            productImageUrl = result.secure_url;
+        }
+
+        const updatedProduct = await Products.findByIdAndUpdate(id, {
+            productName,
+            productPrice,
+            productDescription,
+            productCategory,
+            productImageUrl,
+            tags: tags ? tags.split(',').map(tag => tag.trim()) : [], // Handle tags as comma-separated values
+        }, { new: true });
+
+        if (!updatedProduct) {
+            return res.status(404).json({
+                success: false,
+                message: 'Product not found',
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Product updated successfully',
+            product: updatedProduct,
+        });
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error',
+        });
+    }
+};
 
 const getProducts = async (req, res) => {
     try {
@@ -82,59 +129,6 @@ const getSingleProduct = async (req, res) => {
     }
 };
 
-const updateProduct = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { productName, productPrice, productDescription, productCategory } = req.body;
-        let productImageUrl = req.body.oldImage;
-
-        // Check if all required fields are present
-        if (!productName || !productPrice || !productDescription || !productCategory) {
-            return res.status(400).json({
-                success: false,
-                message: 'Please fill all the fields',
-            });
-        }
-
-        // Handle image upload if a new image is provided
-        if (req.files && req.files.productImage) {
-            const result = await cloudinary.uploader.upload(req.files.productImage.path, {
-                folder: 'products',
-                crop: 'scale',
-            });
-            productImageUrl = result.secure_url;
-        }
-
-        // Update product
-        const updatedProduct = await Products.findByIdAndUpdate(id, {
-            productName,
-            productPrice,
-            productDescription,
-            productCategory,
-            productImageUrl,
-        }, { new: true });
-
-        if (!updatedProduct) {
-            return res.status(404).json({
-                success: false,
-                message: 'Product not found',
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            message: 'Product updated successfully',
-            product: updatedProduct,
-        });
-    } catch (error) {
-        console.error('Error updating product:', error); // Log error details
-        res.status(500).json({
-            success: false,
-            message: 'Internal server error',
-        });
-    }
-};
-// Delete product
 const deleteProduct = async (req, res) => {
     const productId = req.params.id;
 
@@ -152,7 +146,6 @@ const deleteProduct = async (req, res) => {
     }
 };
 
-// Search products
 const searchProducts = async (req, res) => {
     const { query } = req.query;
 
@@ -161,6 +154,7 @@ const searchProducts = async (req, res) => {
             $or: [
                 { productName: { $regex: new RegExp(query, 'i') } },
                 { productDescription: { $regex: new RegExp(query, 'i') } },
+                { tags: { $regex: new RegExp(query, 'i') } }, // Search within tags
             ],
         });
 

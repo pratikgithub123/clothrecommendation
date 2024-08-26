@@ -11,6 +11,7 @@ const AdminEditProduct = () => {
     const [productPrice, setProductPrice] = useState('');
     const [productDescription, setProductDescription] = useState('');
     const [productCategory, setProductCategory] = useState('');
+    const [tags, setTags] = useState(''); // New state for tags
     const [oldImage, setOldImage] = useState('');
     const [productImage, setProductImage] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
@@ -23,6 +24,7 @@ const AdminEditProduct = () => {
                 setProductPrice(product.productPrice);
                 setProductDescription(product.productDescription);
                 setProductCategory(product.productCategory);
+                setTags(product.tags.join(', ')); // Set tags as comma-separated string
                 setOldImage(product.productImageUrl);
             } else {
                 toast.error(res.data.message);
@@ -47,6 +49,7 @@ const AdminEditProduct = () => {
         formData.append('productPrice', productPrice);
         formData.append('productDescription', productDescription);
         formData.append('productCategory', productCategory);
+        formData.append('tags', tags); // Append tags
         if (productImage) {
             formData.append('productImage', productImage);
         }
@@ -66,6 +69,7 @@ const AdminEditProduct = () => {
                 toast.error('Internal Server Error!');
             });
     };
+
     return (
         <div className='m-3' style={{ overflowY: 'auto', maxHeight: '80vh' }}>
             <div className='d-flex gap-3'>
@@ -108,10 +112,19 @@ const AdminEditProduct = () => {
                         className='form-control mb-2'
                         required
                     >
-                       <option value="Top">Top</option>
-                                <option value="Bottom">Bottom</option>
-                                <option value="Footwear">Footwear</option>
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Footwear">Footwear</option>
                     </select>
+
+                    <label>Tags (comma separated)</label>
+                    <input
+                        value={tags}
+                        onChange={(e) => setTags(e.target.value)}
+                        className='form-control mb-2'
+                        type="text"
+                        placeholder='Enter tags (e.g. summer, casual, men)'
+                    />
 
                     <label>Product Image</label>
                     <input

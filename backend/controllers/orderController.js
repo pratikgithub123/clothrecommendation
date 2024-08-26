@@ -1,5 +1,6 @@
 const Order = require('../model/orderModel');
 const Cart = require('../model/cartModel');
+const  User = require('../model/userModel')
 
 const createOrder = async (req, res) => {
     const { userId, phoneNumber, location } = req.body;
@@ -14,8 +15,6 @@ const createOrder = async (req, res) => {
     try {
         // Fetch the user's cart
         const cart = await Cart.findOne({ user: userId }).populate('items.product');
-        console.log("Fetched cart:", cart); // Debugging
-
         if (!cart || cart.items.length === 0) {
             return res.status(400).json({
                 success: false,
@@ -41,11 +40,17 @@ const createOrder = async (req, res) => {
             userId,
             items: orderItems,
             totalPrice,
-            phoneNumber, // Add phoneNumber
-            location // Add location
+            phoneNumber,
+            location
         });
 
         await order.save();
+
+        // Update the user's purchase history
+        const user = await User.findById(userId);
+        const purchasedProductIds = cart.items.map(item => item.product._id);
+        user.purchaseHistory.push(...purchasedProductIds);
+        await user.save();
 
         // Clear the cart
         cart.items = [];
@@ -65,6 +70,7 @@ const createOrder = async (req, res) => {
         });
     }
 };
+
 
 
 const getUserOrders = async (req, res) => {

@@ -1,0 +1,17 @@
+_id,productName,productPrice,productDescription,productCategory,productImageUrl,createdAt,__v
+66c4851a6bb43ff18f854d84,Tshirt,500,Black Tshirt,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724155077/products/wbaxrtpajrjd8jcq3dzz.webp,2024-08-20T11:59:22.165Z,0
+66c4851a6bb43ff18f854d8d,Sweater,500,Blue Sweater,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724155431/products/baoz5spk2mcew0y1ue2x.png,2024-08-20T11:59:22.873Z,0
+66c485a06bb43ff18f855047,Hoodie,999,Orange Hoodie Made by Fibre,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724155211/products/zjdwkduust7sg499qkqy.png,2024-08-20T12:01:36.611Z,0
+66c486c76bb43ff18f8554b7,Jordan,6000,Jordan,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724155505/products/h0m3wjexvcvnrhonk1pg.png,2024-08-20T12:06:31.108Z,0
+66c4876d6bb43ff18f8556b6,Grey Hoodie,3000,Grey Hoodie,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724155672/products/hdfbwmbdbwzg1izklpd4.png,2024-08-20T12:09:17.682Z,0
+66c48c2b6bb43ff18f8564c7,Jeans Pant,1000,Jeans,Bottom,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724156886/products/xzv33b2gjwsxtqzora3u.png,2024-08-20T12:29:31.849Z,0
+66c48c4a6bb43ff18f8565d5,Blue Tshirt,1500,Tshirt,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724156917/products/ywowrnkdedcv8pmzsuna.png,2024-08-20T12:30:02.314Z,0
+66c48c946bb43ff18f856772,Khaki Pant,1500,Khaki,Bottom,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724156988/products/bftkqo5yjuhduvhadbof.png,2024-08-20T12:31:16.106Z,0
+66c48c9f6bb43ff18f8567eb,Blue Sweater Cotton,2000,Sweater,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157003/products/gfpmpqju1pu4iqvk71rx.png,2024-08-20T12:31:27.978Z,0
+66c48d0e6bb43ff18f856a3e,Brown Leather,3000,Leather,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157112/products/urbppsgnmgm1cw8v387i.png,2024-08-20T12:33:18.093Z,0
+66c48d246bb43ff18f856b1c,Black Leather,3000,Leather,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157134/products/dlcqtmm6qkilbqczf1eg.png,2024-08-20T12:33:40.122Z,0
+66c48d286bb43ff18f856b47,Black Leather,3500,Leather,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157139/products/ykxamydpgqca0mfmpahl.png,2024-08-20T12:33:44.218Z,0
+66c48f176bb43ff18f857fc3,Tshirt,1200,Red Tshirt,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157633/products/y4jkwox2mge2vpyauqmn.png,2024-08-20T12:41:59.501Z,0
+66c48f186bb43ff18f857fc7,Red Polo Tshirt,1200,Red Tshirt,Top,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157635/products/wxuars4rheedweeb97ir.png,2024-08-20T12:42:00.565Z,0
+66c48f526bb43ff18f858190,Green Sandal,1500,Sandal,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157692/products/efz8jnqqpsrpsi76qgiq.png,2024-08-20T12:42:58.120Z,0
+66c48f5d6bb43ff18f8581b9,Brown Sandal,1500,Sandal,Footwear,https://res.cloudinary.com/dtxxty1ns/image/upload/v1724157703/products/blsk5ftowhpfgrfks9ip.png,2024-08-20T12:43:09.373Z,0
